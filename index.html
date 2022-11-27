@@ -83,7 +83,7 @@
         <div class="p-5 mt-1">
             
             <!--TITTLE-->
-            <div class="row" style="direction: rtl;">
+            <div class="row" >
                 <h1><b>Groups</b></h1>
                 <hr>
             </div>
@@ -1331,4 +1331,217 @@
     </div>
     <!--//MAIN CONTENT//-->
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.0/axios.min.js"></script>
+
+<script>
+    const token = "c42c1a89e12b45c893357856ae7c4880"
+    const baseUrl = "https://api.football-data.org/v4/competitions/2000"
+    function getStandings(){
+        const url = `${baseUrl}/standings`
+
+        axios.get(url, {
+            headers: {
+                "X-Auth-Token": token
+            }
+        })
+        .then((response) => {
+            
+            const standings = response.data.standings
+            
+            for(standing of standings){
+                 let tableContent = ""   
+
+                 document.getElementById("standings").innerHTML = ""
+                 for(row of standing.table){
+                    tableContent+=`<!--TEAM-->
+                          <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-sm-4 d-flex justify-content-center" style="text-align: center">
+                                    <span class="flag">
+                                        <img class="rounded-circle" src="qtr.PNG" alt="">
+                                    </span>
+
+                                    <h5 style="margin:auto 4px">QTR</h5>
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    0
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    0
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    0
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    <b>0</b>
+                                </div>
+                            </div>
+                          </li>
+                          <!--//TEAM//-->`
+                 }
+            
+                 const content = `<!--STANDINGS COL-->
+                <div class="col-sm-6 mb-4">
+                    <div class="card shadow border-none">
+                        <div class="card-header bg-primary" style="text-align: center;">
+                          <b>Group A</b>
+                        </div>
+
+                        <div class="row m-0 bg-secondary">
+                            <div class="col-sm-4" style="text-align: center">
+                                TEAM
+                            </div>
+
+                            <div class="col-sm-2" style="text-align: center">
+                                W
+                            </div>
+
+                            <div class="col-sm-2" style="text-align: center">
+                                L
+                            </div>
+
+                            <div class="col-sm-2" style="text-align: center">
+                                D
+                            </div>
+
+                            <div class="col-sm-2" style="text-align: center">
+                                PTS
+                            </div>
+
+                        </div>
+                        <!--TEAMS-->
+                        <ul class="list-group list-group-flush">
+                            <!--TEAM-->
+                          <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-sm-4 d-flex justify-content-center" style="text-align: center">
+                                    <span class="flag">
+                                        <img class="rounded-circle" src="qtr.PNG" alt="">
+                                    </span>
+
+                                    <h5 style="margin:auto 4px">QTR</h5>
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    0
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    0
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    0
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    <b>0</b>
+                                </div>
+                            </div>
+                          </li>
+                          <!--//TEAM//-->
+                          <!--TEAM-->
+                          <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-sm-4 d-flex justify-content-center" style="text-align: center">
+                                    <span class="flag">
+                                        <img class="rounded-circle" src="qtr.PNG" alt="">
+                                    </span>
+
+                                    <h5 style="margin:auto 4px">QTR</h5>
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    0
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    0
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    0
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    <b>0</b>
+                                </div>
+                            </div>
+                          </li>
+                          <!--//TEAM//-->
+                          <!--TEAM-->
+                          <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-sm-4 d-flex justify-content-center" style="text-align: center">
+                                    <span class="flag">
+                                        <img class="rounded-circle" src="qtr.PNG" alt="">
+                                    </span>
+
+                                    <h5 style="margin:auto 4px">QTR</h5>
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    0
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    0
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    0
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    <b>0</b>
+                                </div>
+                            </div>
+                          </li>
+                          <!--//TEAM//-->
+                          <!--TEAM-->
+                          <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-sm-4 d-flex justify-content-center" style="text-align: center">
+                                    <span class="flag">
+                                        <img class="rounded-circle" src="qtr.PNG" alt="">
+                                    </span>
+
+                                    <h5 style="margin:auto 4px">QTR</h5>
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    0
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    0
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    0
+                                </div>
+    
+                                <div class="col-sm-2" style="text-align: center">
+                                    <b>0</b>
+                                </div>
+                            </div>
+                          </li>
+                          <!--//TEAM//-->
+
+                        </ul>
+                        <!--//TEAMS//-->
+                      </div>
+                </div>
+                <!--//STANDINGS COL//-->`
+                document.getElementById("standings").innerHTML += content    
+            }
+        })
+    }
+
+    getStandings()
+</script>
 </html>
