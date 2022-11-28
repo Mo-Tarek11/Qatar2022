@@ -48,9 +48,9 @@
             -webkit-filter: drop-shadow(5px 5px 30px #222);
             filter: drop-shadow(5px 5px 30px #222);
         }
-        .sound{
+        /* .sound{
             text-align: end;
-        }
+        } */
 
 
         *{
@@ -114,16 +114,47 @@
             transition: ease-in-out 0.5s;
         }
 
+        .final{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .countdown{
+            display: flex;
+            transform: scale(2);
+            margin-top: 45px;
+        }
+
+        .time{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 15px;
+        }
+
+        .time h2{
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 1;
+            margin: 0 0 5px;
+        }
+
     </style>
  
         </head>
     <body>
         <!--INTRO-->
-    <div class="intro">
+        <div class="intro">
         <h1 class="logo-header">
             <span class="logo"><img src="fwc-logo.png" alt=""></span>
         </h1>
-    </div>
+        </div>
         <!--//INTRO//-->
 
     <div id="logo-header">
@@ -145,6 +176,31 @@
     <!--QATAR WORD-->
     <div class="d-flex justify-content-center" style="margin-top:30px">
         <img src="qatar-word.png" alt="" style="width:400px">
+    </div> <br> <br>
+
+    <div class="final">
+        <h1>Countdown to the Final</h1>
+        <div id="countdown" class="countdown">
+            <div class="time">
+                <h2 id="days"></h2>
+                <small>Days</small>
+            </div>
+
+            <div class="time">
+                <h2 id="hours"></h2>
+                <small>hours</small>
+            </div>
+
+            <div class="time">
+                <h2 id="minutes"></h2>
+                <small>Minutes</small>
+            </div>
+
+            <div class="time">
+                <h2 id="seconds"></h2>
+                <small>Seconds</small>
+            </div>
+        </div>
     </div>
 
     <!--AUDIO-->
@@ -1455,15 +1511,15 @@
     var mySong = document.getElementById("mySong");
     var sii = document.getElementById("sii");
 
-    sii.onclick = function(){
-        if(mySong.paused){
-            mySong.play();
-            sii.src = "unmute.png"
-        }else{
-            mySong.pause();
-            sii.src = "mute.png"
-            }
-        }
+    // sii.onclick = function(){
+    //     if(mySong.paused){
+    //         mySong.play();
+    //         sii.src = "unmute.png"
+    //     }else{
+    //         mySong.pause();
+    //         sii.src = "mute.png"
+    //         }
+    //     }
 
         /*API*/
     const token = "c42c1a89e12b45c893357856ae7c4880"
@@ -1559,6 +1615,29 @@
             }
         })
     }
+
+    let countDownDate = new Date("Dec 18, 2022 15:59:59").getTime();
+
+let counter = setInterval(()=>{
+    let dateNow = new Date().getTime();
+
+    let dateDiff = countDownDate - dateNow;
+
+    let days = Math.floor(dateDiff / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((dateDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((dateDiff % (1000 * 60 * 60 )) / (1000 * 60));
+    let seconds = Math.floor((dateDiff % (1000 * 60 )) / 1000);
+
+    document.getElementById("days").innerHTML = days < 10 ? `0${days}` : days;
+    document.getElementById("hours").innerHTML = hours < 10 ? `0${hours}` : hours;
+    document.getElementById("minutes").innerHTML = minutes < 10 ? `0${minutes}` : minutes;
+    document.getElementById("seconds").innerHTML = seconds < 10 ? `0${seconds}` : seconds;
+
+    if (dateDiff < 0){
+        clearInterval(counter);
+    }
+
+}, 1000)
 
     getStandings()
 </script>
